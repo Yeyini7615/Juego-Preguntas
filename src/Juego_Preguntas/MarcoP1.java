@@ -41,8 +41,9 @@ import javax.swing.JRadioButton;
 		salir.addActionListener(new AccionSalir());
 		lamina_botones.add(ok);
 		lamina_botones.add(salir);		
-		contador=new JLabel("Puntos: ");	
-		lamina_botones.add(contador);
+		contador=new JLabel();
+		Contador contadorM1=new Contador();
+		lamina_botones.add(contadorM1.cuenta(0, contador));
 		add(lamina1, BorderLayout.CENTER);
 		add(lamina_botones, BorderLayout.SOUTH);
 		

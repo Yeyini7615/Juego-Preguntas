@@ -41,8 +41,9 @@ import javax.swing.JRadioButton;
 		salir.addActionListener(new AccionSalir());
 		lamina_botones.add(ok);
 		lamina_botones.add(salir);		
-		contador=new JLabel("Puntos: ");	
-		lamina_botones.add(contador);
+		contador=new JLabel();
+		Contador contadorM3=new Contador();
+		lamina_botones.add(contadorM3.cuenta(20, contador));
 		add(lamina3, BorderLayout.CENTER);
 		add(lamina_botones, BorderLayout.SOUTH);
 		
@@ -54,13 +55,8 @@ private JButton ok;
 private String mensajeLose ="Te has retirado, tu puntaje se guardara. Ingresa tu nombre";
 private String nombreJugador;
 public JLabel contador;
-public int  puntos=0;
 public String rutaArchivo;
 
-public void contador(int puntos) {
-	contador.setText("Punto: "+ puntos);
-	puntos=this.puntos;
-}
 
 class AccionMos3 implements ActionListener{
 
@@ -70,6 +66,9 @@ class AccionMos3 implements ActionListener{
 		if(laminaP3.dameseleccion().equals("Fronteras,hinterland,heartland,comunicaciones")||laminaP3.dameseleccion().equals("Por accion violenta")||laminaP3.dameseleccion().equals("El punto Nemo")||laminaP3.dameseleccion().equals("Un continente")||laminaP3.dameseleccion().equals("11.034 metros de profundidad")) {
 			setVisible(false);
 			MarcoP4 marco= new MarcoP4();
+			Contador prueba=new Contador();
+			prueba.setPuntos(20);
+			System.out.println(prueba.getPuntos());
 			
 			
 	}else {
