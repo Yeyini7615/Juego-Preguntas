@@ -38,11 +38,11 @@ import javax.swing.JRadioButton;
 		ok= new JButton("Listo");			
 		JButton salir=new JButton("Salir");
 		ok.addActionListener(new AccionMos3());	
-		salir.addActionListener(new AccionSalir());
+		//salir.addActionListener(new AccionSalir());
 		lamina_botones.add(ok);
 		lamina_botones.add(salir);		
 		contador=new JLabel();
-		Contador contadorM3=new Contador();
+		contadorM3=new Contador();
 		lamina_botones.add(contadorM3.cuenta(20, contador));
 		add(lamina3, BorderLayout.CENTER);
 		add(lamina_botones, BorderLayout.SOUTH);
@@ -56,6 +56,7 @@ private String mensajeLose ="Te has retirado, tu puntaje se guardara. Ingresa tu
 private String nombreJugador;
 public JLabel contador;
 public String rutaArchivo;
+private Contador contadorM3;
 
 
 class AccionMos3 implements ActionListener{
@@ -66,9 +67,8 @@ class AccionMos3 implements ActionListener{
 		if(laminaP3.dameseleccion().equals("Fronteras,hinterland,heartland,comunicaciones")||laminaP3.dameseleccion().equals("Por accion violenta")||laminaP3.dameseleccion().equals("El punto Nemo")||laminaP3.dameseleccion().equals("Un continente")||laminaP3.dameseleccion().equals("11.034 metros de profundidad")) {
 			setVisible(false);
 			MarcoP4 marco= new MarcoP4();
-			Contador prueba=new Contador();
-			prueba.setPuntos(20);
-			System.out.println(prueba.getPuntos());
+			contadorM3.setPuntos(20);
+			System.out.println(contadorM3.getPuntos());
 			
 			
 	}else {
@@ -77,39 +77,9 @@ class AccionMos3 implements ActionListener{
 	
 }
 }
-class AccionSalir implements ActionListener{
+}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		nombreJugador =JOptionPane.showInputDialog(MarcoP3.this, mensajeLose, "Has perdido", 1);
-		File ruta=new File("src/Juego_Preguntas/Historial.txt");
-		rutaArchivo = ruta.getAbsolutePath();
-		
-		try {
-			ruta.createNewFile();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		Escribiendo nP=new Escribiendo();
-		nP.escribir(rutaArchivo);
-		
-	}
-	
-}
-class Escribiendo{
-	public void escribir(String ruta_H)  {
-		String mensaje= String.valueOf(nombreJugador)+puntos;
-		
-		try {
-			FileWriter escritura=new FileWriter(rutaArchivo, true);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("No se encontro el archivo");
-		}
-	}
-}
-}
+
 	
 
 
