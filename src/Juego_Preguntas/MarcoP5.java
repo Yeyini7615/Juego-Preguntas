@@ -26,7 +26,8 @@ class MarcoP5 extends JFrame {
 			salir.addActionListener(new AccionSalir());
 			lamina_botones.add(ok);
 			lamina_botones.add(salir);		
-			contador=new JLabel("Puntos: ");	
+			contador=new JLabel();
+			contadorM5=new Contador();
 			lamina_botones.add(contador);
 			add(lamina5, BorderLayout.CENTER);
 			add(lamina_botones, BorderLayout.SOUTH);
@@ -41,6 +42,7 @@ class MarcoP5 extends JFrame {
 	public JLabel contador;
 	public int  puntos=0;
 	public String rutaArchivo;
+	private Contador contadorM5;
 
 	public void contador(int puntos) {
 		contador.setText("Punto: "+ puntos);

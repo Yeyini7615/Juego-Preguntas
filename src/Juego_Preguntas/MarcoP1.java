@@ -38,11 +38,11 @@ import javax.swing.JRadioButton;
 		ok= new JButton("Listo");			
 		JButton salir=new JButton("Salir");
 		ok.addActionListener(new AccionMos());	
-		salir.addActionListener(new AccionSalir());
+		salir.addActionListener(new EnviaTexto());
 		lamina_botones.add(ok);
 		lamina_botones.add(salir);		
 		contador=new JLabel();
-		Contador contadorM1=new Contador();
+		contadorM1=new Contador();
 		lamina_botones.add(contadorM1.cuenta(0, contador));
 		add(lamina1, BorderLayout.CENTER);
 		add(lamina_botones, BorderLayout.SOUTH);
@@ -56,6 +56,7 @@ private String mensajeLose ="Te has retirado, tu puntaje se guardara. Ingresa tu
 private String nombreJugador;
 public String rutaArchivo;
 public JLabel contador;	
+private Contador contadorM1;
 
 class AccionMos implements ActionListener{
 
@@ -65,6 +66,8 @@ class AccionMos implements ActionListener{
 		if(laminaP1.dameseleccion().equals("entre 4 y 6 Litros")||laminaP1.dameseleccion().equals("Rusia y Vaticano")||laminaP1.dameseleccion().equals("Don Quijote")||laminaP1.dameseleccion().equals("Sodio y Cloro")||laminaP1.dameseleccion().equals("Infinitos")) {
 			setVisible(false);
 			MarcoP2 marco=new MarcoP2();
+			contadorM1.setPuntos(10);
+			System.out.println(contadorM1.getPuntos());
 			
 			
 			
@@ -72,40 +75,8 @@ class AccionMos implements ActionListener{
 		System.out.println("222");
 	}
 	
-}
-}
-class AccionSalir implements ActionListener{
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		nombreJugador =JOptionPane.showInputDialog(MarcoP1.this, mensajeLose, "Has perdido", 1);
-		File ruta=new File("src/Juego_Preguntas/Historial.txt");
-		rutaArchivo = ruta.getAbsolutePath();
-		
-		try {
-			ruta.createNewFile();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		Escribiendo nP=new Escribiendo();
-		nP.escribir(rutaArchivo);
-		
-	}
-	
-}
-class Escribiendo{
-	public void escribir(String ruta_H)  {
-		String mensaje= String.valueOf(nombreJugador)+puntos;
-		
-		try {
-			FileWriter escritura=new FileWriter(rutaArchivo, true);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("No se encontro el archivo");
-		}
-	}
-}
+   }
+ }
 }
 
 

@@ -30,6 +30,7 @@ class Accion_botones implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		MarcoP1 inicio=new MarcoP1();
+		MarcoServidor n=new MarcoServidor();
 	}
 class AccionH implements ActionListener{
 

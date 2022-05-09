@@ -42,7 +42,7 @@ import javax.swing.JRadioButton;
 		lamina_botones.add(ok);
 		lamina_botones.add(salir);		
 		contador2=new JLabel();
-		Contador contadorM2=new Contador();
+		contadorM2=new Contador();
 		lamina_botones.add(contadorM2.cuenta(10, contador2));
 		add(lamina2, BorderLayout.CENTER);
 		add(lamina_botones, BorderLayout.SOUTH);
@@ -56,6 +56,7 @@ private String mensajeLose ="Te has retirado, tu puntaje se guardara. Ingresa tu
 private String nombreJugador;
 public JLabel contador2;
 public String rutaArchivo;
+private Contador contadorM2;
 
 public void contador(int puntos) {
 	contador.setText("Punto: "+ puntos);
@@ -70,8 +71,8 @@ class AccionMos2 implements ActionListener{
 		if(laminaP2.dameseleccion().equals("Rad/s")||laminaP2.dameseleccion().equals("9.8N")||laminaP2.dameseleccion().equals("Rodadura")||laminaP2.dameseleccion().equals("Ninguno de los anteriores")||laminaP2.dameseleccion().equals("Energia cinetica y energia potencial gravitatoria")){
 			setVisible(false);
 			MarcoP3 marco=new MarcoP3();
-			
-			
+			contadorM2.setPuntos(10);
+			System.out.println(contadorM2.getPuntos());
 	}else {
 		System.out.println("222");
 	}
