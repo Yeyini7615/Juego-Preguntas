@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
-class MarcoP4 extends JFrame {
+class MarcoP4 extends Contador {
 	
 	public MarcoP4() {
 		setVisible(true);
@@ -14,6 +14,8 @@ class MarcoP4 extends JFrame {
 		setTitle("Biologia");
 		JPanel lamina4=new JPanel();
 		lamina4.setLayout(new BorderLayout());
+		setResizable(false);
+		setLocationRelativeTo(null);
 		//-------------------------------------------		
 		laminaP4=new LaminaP4();
 		lamina4.add(laminaP4);
@@ -22,8 +24,9 @@ class MarcoP4 extends JFrame {
 		JPanel lamina_botones=new JPanel();
 		ok= new JButton("Listo");			
 		JButton salir=new JButton("Salir");
+		salir.setActionCommand("4");
 		ok.addActionListener(new AccionMos4());	
-		//salir.addActionListener(new AccionSalir());
+		salir.addActionListener(new EnviaTexto());
 		lamina_botones.add(ok);
 		lamina_botones.add(salir);		
 		contador=new JLabel();
@@ -58,10 +61,11 @@ class AccionMos4 implements ActionListener{
 			setVisible(false);
 			MarcoP5 marco=new MarcoP5();
 			contadorM4.setPuntos(30);
-			System.out.println(contadorM4.getPuntos());
+			
 			
 	}else {
-		System.out.println("222");
+		JOptionPane.showMessageDialog(null,"Respuesta incorrecta");
+		setVisible(false);
 	}
 	
 	}

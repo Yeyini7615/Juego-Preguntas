@@ -51,10 +51,11 @@ class MarcoServidor extends JFrame implements Runnable{
 			//------------------------------------------------------------------
 			areaTexto.append("\n"+nameLlegada+": "+scoreLlegada);
 			String mensaje= "\n"+nameLlegada+": "+scoreLlegada;
-			System.out.println("al final"+mensaje);
+			
 			datos=new GuardaDatos();
 			datos.EscribeArchivo(mensaje);
 			misocket.close();
+			
 			}
 		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block

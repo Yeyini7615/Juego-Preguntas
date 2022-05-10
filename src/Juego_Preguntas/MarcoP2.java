@@ -29,6 +29,8 @@ import javax.swing.JRadioButton;
 		setTitle("Fisica");
 		JPanel lamina2=new JPanel();
 		lamina2.setLayout(new BorderLayout());
+		setResizable(false);
+		setLocationRelativeTo(null);
 		//-------------------------------------------		
 		laminaP2=new LaminaP2();
 		lamina2.add(laminaP2);
@@ -53,7 +55,6 @@ import javax.swing.JRadioButton;
 
 private LaminaP2 laminaP2;
 private JButton ok;
-private String mensajeLose ="Te has retirado, tu puntaje se guardara. Ingresa tu nombre";
 private String nombreJugador;
 public JLabel contador2;
 public String rutaArchivo;
@@ -73,43 +74,12 @@ class AccionMos2 implements ActionListener{
 			setVisible(false);
 			MarcoP3 marco=new MarcoP3();
 			contadorM2.setPuntos(10);
-			System.out.println(contadorM2.getPuntos());
+			
 	}else {
-		System.out.println("222");
+		JOptionPane.showMessageDialog(null,"Respuesta incorrecta");
+		setVisible(false);
 	}
 	
-}
-}
-class AccionSalir implements ActionListener{
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		nombreJugador =JOptionPane.showInputDialog(MarcoP2.this, mensajeLose, "Has perdido", 1);
-		File ruta=new File("src/Juego_Preguntas/Historial.txt");
-		rutaArchivo = ruta.getAbsolutePath();
-		
-		try {
-			ruta.createNewFile();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		Escribiendo nP=new Escribiendo();
-		nP.escribir(rutaArchivo);
-		
 	}
-	
-}
-class Escribiendo{
-	public void escribir(String ruta_H)  {
-		String mensaje= String.valueOf(nombreJugador)+puntos;
-		
-		try {
-			FileWriter escritura=new FileWriter(rutaArchivo, true);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("No se encontro el archivo");
-		}
 	}
-}
 }

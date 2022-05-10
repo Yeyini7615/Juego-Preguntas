@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
- class MarcoP3 extends JFrame {
+ class MarcoP3 extends Contador {
 	
 	public MarcoP3() {
 		setVisible(true);
@@ -29,6 +29,8 @@ import javax.swing.JRadioButton;
 		setTitle("Geopolitica y Geografia");
 		JPanel lamina3=new JPanel();
 		lamina3.setLayout(new BorderLayout());
+		setResizable(false);
+		setLocationRelativeTo(null);
 		//-------------------------------------------		
 		laminaP3=new LaminaP3();
 		lamina3.add(laminaP3);
@@ -37,8 +39,9 @@ import javax.swing.JRadioButton;
 		JPanel lamina_botones=new JPanel();
 		ok= new JButton("Listo");			
 		JButton salir=new JButton("Salir");
+		salir.setActionCommand("3");
 		ok.addActionListener(new AccionMos3());	
-		//salir.addActionListener(new AccionSalir());
+		salir.addActionListener(new EnviaTexto());
 		lamina_botones.add(ok);
 		lamina_botones.add(salir);		
 		contador=new JLabel();
@@ -68,11 +71,12 @@ class AccionMos3 implements ActionListener{
 			setVisible(false);
 			MarcoP4 marco= new MarcoP4();
 			contadorM3.setPuntos(20);
-			System.out.println(contadorM3.getPuntos());
+			
 			
 			
 	}else {
-		System.out.println("2");
+		JOptionPane.showMessageDialog(null,"Respuesta incorrecta");
+		setVisible(false);
 	}
 	
 }

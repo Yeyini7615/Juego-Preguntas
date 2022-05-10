@@ -29,6 +29,8 @@ import javax.swing.JRadioButton;
 		setTitle("Cultura General.");
 		JPanel lamina1=new JPanel();
 		lamina1.setLayout(new BorderLayout());
+		setResizable(false);
+		setLocationRelativeTo(null);
 		//-------------------------------------------		
 		laminaP1=new LaminaP1();
 		lamina1.add(laminaP1);
@@ -67,12 +69,9 @@ class AccionMos extends PaqueteEnvio implements ActionListener {
 		if(laminaP1.dameseleccion().equals("entre 4 y 6 Litros")||laminaP1.dameseleccion().equals("Rusia y Vaticano")||laminaP1.dameseleccion().equals("Don Quijote")||laminaP1.dameseleccion().equals("Sodio y Cloro")||laminaP1.dameseleccion().equals("Infinitos")) {
 			setVisible(false);
 			datos.setScore(10);
-			System.out.println("este" + datos.getScore());
 			MarcoP2 marco=new MarcoP2();
 			contadorM1.setPuntos(10);
 		
-			System.out.println(contadorM1.getPuntos());
-			
 			
 			
 	}else {

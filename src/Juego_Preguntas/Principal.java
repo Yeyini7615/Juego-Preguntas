@@ -14,6 +14,8 @@ public class Principal {
 		Marco_principal marcoP1=new Marco_principal();
 		marcoP1.setVisible(true);
 		marcoP1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		MarcoServidor n=new MarcoServidor();
+		n.setVisible(false);
 		
 	}
 

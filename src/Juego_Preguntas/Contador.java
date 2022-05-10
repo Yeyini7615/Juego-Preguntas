@@ -37,10 +37,8 @@ public class Contador extends JFrame {
 		return a;
 		
 	}
-	public JLabel contador;	
-	public JLabel contador2;
-	public JLabel contador3;
-	public ArrayList puntosLista;
+public JLabel contador;
+	
 
 int puntos=0; 
 
@@ -50,22 +48,31 @@ class Servidor {
 		
 	}
 }
-
+//----------------- Clase para los eventos de los botones de salida----------------//
 class EnviaTexto implements ActionListener{
 	private int Score;
 	
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
 			String nombre=JOptionPane.showInputDialog(null, "Se ha retirado, ingrese su nombre");
 			String comando=e.getActionCommand();
+			salida(nombre, comando);
+		}	
+		public void salida(String nombre, String comando) {
+			
 			int i=Integer.parseInt(comando);
 			switch (i) {
 			case 1: datos.setScore(0);
 				break;
 			case 2: datos.setScore(10);
 				break;
+			case 3: datos.setScore(20);
+				break;
+			case 4: datos.setScore(30);
+				break;
+			case 5: datos.setScore(50);	
+				
 			}
 			InetAddress address;
 			
@@ -84,15 +91,16 @@ class EnviaTexto implements ActionListener{
 				//DataOutputStream out=new DataOutputStream(misocket.getOutputStream());
 				//out.writeInt(puntos);
 				outDatos.close();
-				
+				System.exit(0);
 			}catch(IOException e1) {
 				System.out.println(e1.getMessage());
 			}
-		}	
+		}
 		
 	}
 PaqueteEnvio datos=new PaqueteEnvio();
 }
+//------------------- Clase con los metodos gettters y setters de los datos a enviar-------------//
 class PaqueteEnvio implements Serializable{
 	private String name;
 

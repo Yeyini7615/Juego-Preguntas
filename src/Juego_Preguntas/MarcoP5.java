@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
-class MarcoP5 extends JFrame {
+class MarcoP5 extends Contador {
 		
 		public MarcoP5() {
 			setVisible(true);
@@ -14,6 +14,8 @@ class MarcoP5 extends JFrame {
 			setTitle("Astrofisicanuclear");
 			JPanel lamina5=new JPanel();
 			lamina5.setLayout(new BorderLayout());
+			setResizable(false);
+			setLocationRelativeTo(null);
 			//-------------------------------------------		
 			laminaP5=new LaminaP5();
 			lamina5.add(laminaP5);
@@ -22,8 +24,9 @@ class MarcoP5 extends JFrame {
 			JPanel lamina_botones=new JPanel();
 			ok= new JButton("Listo");			
 			JButton salir=new JButton("Salir");
+			salir.setActionCommand("5");
 			ok.addActionListener(new AccionMos4());	
-			salir.addActionListener(new AccionSalir());
+			salir.addActionListener(new EnviaTexto());
 			lamina_botones.add(ok);
 			lamina_botones.add(salir);		
 			contador=new JLabel();
@@ -60,43 +63,10 @@ class MarcoP5 extends JFrame {
 				marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				contadorM5.setPuntos(50);
 		}else {
-			System.out.println("222");
+			JOptionPane.showMessageDialog(null,"Respuesta incorrecta");
+			setVisible(false);
 		}
 		
 	}
 	}
-	class AccionSalir implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			nombreJugador =JOptionPane.showInputDialog(MarcoP5.this, mensajeLose, "Has perdido", 1);
-			File ruta=new File("src/Juego_Preguntas/Historial.txt");
-			rutaArchivo = ruta.getAbsolutePath();
-			
-			try {
-				ruta.createNewFile();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			Escribiendo nP=new Escribiendo();
-			nP.escribir(rutaArchivo);
-			
-		}
-		
-	}
-	class Escribiendo{
-		public void escribir(String ruta_H)  {
-			String mensaje= String.valueOf(nombreJugador)+puntos;
-			
-			try {
-				FileWriter escritura=new FileWriter(rutaArchivo, true);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("No se encontro el archivo");
-			}
-		}
-	}
-}
-
-
+}	
