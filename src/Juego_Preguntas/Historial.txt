@@ -1,4 +1,0 @@
-
-Leo: 0
-Leo: 30
-Leandro: 50
