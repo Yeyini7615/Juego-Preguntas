@@ -28,7 +28,7 @@ class MarcoP5 extends JFrame {
 			lamina_botones.add(salir);		
 			contador=new JLabel();
 			contadorM5=new Contador();
-			lamina_botones.add(contador);
+			lamina_botones.add(contadorM5.cuenta(50, contador));
 			add(lamina5, BorderLayout.CENTER);
 			add(lamina_botones, BorderLayout.SOUTH);
 			
@@ -39,10 +39,10 @@ class MarcoP5 extends JFrame {
 	private JButton ok;
 	private String mensajeLose ="Te has retirado, tu puntaje se guardara. Ingresa tu nombre";
 	private String nombreJugador;
-	public JLabel contador;
 	public int  puntos=0;
 	public String rutaArchivo;
 	private Contador contadorM5;
+	private JLabel contador;
 
 	public void contador(int puntos) {
 		contador.setText("Punto: "+ puntos);
@@ -56,9 +56,9 @@ class MarcoP5 extends JFrame {
 			
 			if(laminaP5.dameseleccion().equals("Todos son radioactivos")||laminaP5.dameseleccion().equals("Hidrogeno")||laminaP5.dameseleccion().equals("La gravedad")||laminaP5.dameseleccion().equals("El Gran Colicionador de Hadrones")||laminaP5.dameseleccion().equals("Enana Amarilla de Tipo GII")) {
 				setVisible(false);
-				
-				puntos+=10;
-				
+				Marco_Win marco= new Marco_Win();
+				marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				contadorM5.setPuntos(50);
 		}else {
 			System.out.println("222");
 		}

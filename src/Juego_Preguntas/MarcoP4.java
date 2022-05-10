@@ -23,7 +23,7 @@ class MarcoP4 extends JFrame {
 		ok= new JButton("Listo");			
 		JButton salir=new JButton("Salir");
 		ok.addActionListener(new AccionMos4());	
-		salir.addActionListener(new AccionSalir());
+		//salir.addActionListener(new AccionSalir());
 		lamina_botones.add(ok);
 		lamina_botones.add(salir);		
 		contador=new JLabel();
@@ -64,38 +64,8 @@ class AccionMos4 implements ActionListener{
 		System.out.println("222");
 	}
 	
-}
-}
-class AccionSalir implements ActionListener{
+	}
+	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		nombreJugador =JOptionPane.showInputDialog(MarcoP4.this, mensajeLose, "Has perdido", 1);
-		File ruta=new File("src/Juego_Preguntas/Historial.txt");
-		rutaArchivo = ruta.getAbsolutePath();
-		
-		try {
-			ruta.createNewFile();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		Escribiendo nP=new Escribiendo();
-		nP.escribir(rutaArchivo);
-		
-	}
-	
-}
-class Escribiendo{
-	public void escribir(String ruta_H)  {
-		String mensaje= String.valueOf(nombreJugador)+puntos;
-		
-		try {
-			FileWriter escritura=new FileWriter(rutaArchivo, true);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("No se encontro el archivo");
-		}
-	}
-}
+
 }

@@ -36,7 +36,8 @@ import javax.swing.JRadioButton;
 		setLayout(new BorderLayout());
 		JPanel lamina_botones=new JPanel();
 		ok= new JButton("Listo");			
-		JButton salir=new JButton("Salir");
+		salir=new JButton("Salir");
+		salir.setActionCommand("1");
 		ok.addActionListener(new AccionMos());	
 		salir.addActionListener(new EnviaTexto());
 		lamina_botones.add(ok);
@@ -51,28 +52,32 @@ import javax.swing.JRadioButton;
 		}
 
 private LaminaP1 laminaP1;
-private JButton ok;
+private JButton ok, salir;
 private String mensajeLose ="Te has retirado, tu puntaje se guardara. Ingresa tu nombre";
 private String nombreJugador;
 public String rutaArchivo;
 public JLabel contador;	
 private Contador contadorM1;
 
-class AccionMos implements ActionListener{
+class AccionMos extends PaqueteEnvio implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		if(laminaP1.dameseleccion().equals("entre 4 y 6 Litros")||laminaP1.dameseleccion().equals("Rusia y Vaticano")||laminaP1.dameseleccion().equals("Don Quijote")||laminaP1.dameseleccion().equals("Sodio y Cloro")||laminaP1.dameseleccion().equals("Infinitos")) {
 			setVisible(false);
+			datos.setScore(10);
+			System.out.println("este" + datos.getScore());
 			MarcoP2 marco=new MarcoP2();
 			contadorM1.setPuntos(10);
+		
 			System.out.println(contadorM1.getPuntos());
 			
 			
 			
 	}else {
-		System.out.println("222");
+		JOptionPane.showMessageDialog(null,"Respuesta incorrecta");
+		
 	}
 	
    }

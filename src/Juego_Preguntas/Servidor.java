@@ -37,6 +37,7 @@ class MarcoServidor extends JFrame implements Runnable{
 			String nameLlegada;
 			int scoreLlegada;
 			PaqueteEnvio paqueteRecibido;
+			GuardaDatos datos;
 			while(true) {
 			Socket misocket=server.accept();
 			ObjectInputStream paqueteDatos = new ObjectInputStream(misocket.getInputStream());
@@ -49,7 +50,10 @@ class MarcoServidor extends JFrame implements Runnable{
 			areaTexto.append(("\n"+mensaje_numero));*/
 			//------------------------------------------------------------------
 			areaTexto.append("\n"+nameLlegada+": "+scoreLlegada);
-			
+			String mensaje= "\n"+nameLlegada+": "+scoreLlegada;
+			System.out.println("al final"+mensaje);
+			datos=new GuardaDatos();
+			datos.EscribeArchivo(mensaje);
 			misocket.close();
 			}
 		} catch (IOException | ClassNotFoundException e) {

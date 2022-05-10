@@ -51,43 +51,51 @@ class Servidor {
 	}
 }
 
-class EnviaTexto implements Runnable, ActionListener{
+class EnviaTexto implements ActionListener{
+	private int Score;
 	
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			InetAddress address;		
+			
+			String nombre=JOptionPane.showInputDialog(null, "Se ha retirado, ingrese su nombre");
+			String comando=e.getActionCommand();
+			int i=Integer.parseInt(comando);
+			switch (i) {
+			case 1: datos.setScore(0);
+				break;
+			case 2: datos.setScore(10);
+				break;
+			}
+			InetAddress address;
+			
 			try {
 				
 				address = InetAddress.getLocalHost();
 				String ip =address.getHostAddress();
 				Socket misocket=new Socket(ip,9090);
 				
-				PaqueteEnvio datos=new PaqueteEnvio();
-				datos.setName("Yeyini");
-				datos.setScore(puntos);
+				
+				datos.setName(nombre);
+				
 				ObjectOutputStream outDatos=new ObjectOutputStream(misocket.getOutputStream());
 				outDatos.writeObject(datos);
 				//---------------------------------Prueba Socket----------------------------//
-				/*DataOutputStream out=new DataOutputStream(misocket.getOutputStream());
-				out.writeInt(puntos);
-				out.close();*/
+				//DataOutputStream out=new DataOutputStream(misocket.getOutputStream());
+				//out.writeInt(puntos);
+				outDatos.close();
 				
 			}catch(IOException e1) {
 				System.out.println(e1.getMessage());
 			}
-		}
-
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			
-		}
+		}	
 		
 	}
+PaqueteEnvio datos=new PaqueteEnvio();
 }
 class PaqueteEnvio implements Serializable{
 	private String name;
+
 	public String getName() {
 		return name;
 	}
@@ -100,7 +108,7 @@ class PaqueteEnvio implements Serializable{
 	public void setScore(int score) {
 		this.score = score;
 	}
-	private int score;
+	public int score=0;
 
 }
 
